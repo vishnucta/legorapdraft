@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Content Manger'
+define service ZUI_C_ASSET_CMGR_D {
+  expose ZASSET_C_LIST_CMGR_D as AssetCmgr;
+}

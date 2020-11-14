@@ -1,0 +1,5 @@
+CLASS zbp_asset_i_list_d DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zasset_i_list_d.
+ENDCLASS.
+
+CLASS zbp_asset_i_list_d IMPLEMENTATION.
+ENDCLASS.
