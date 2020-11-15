@@ -69,7 +69,7 @@ It briefly defines the scope of business logic to be implemented.
 
 | Entity | Behavior |
 | --- | --- |
-| Asset | Operations:<br> <ul><li>Create, update, delete</li></ul><ul><li>Action: create travels by template</li></ul><br>Validations:<ul><li>validate editable input fields</li></ul> <br>Feature Control:<br><ul><li>Static and dynamic field control</li></ul> |
+| Asset | Operations:<br> <ul><li>Create, update, delete</li></ul><ul><li>Action: create assets by template</li></ul><br>Validations:<ul><li>validate editable input fields</li></ul> <br>Feature Control:<br><ul><li>Static and dynamic field control</li></ul> |
 
 
 ### Product Group Manager Role
