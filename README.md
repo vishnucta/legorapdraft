@@ -1,4 +1,4 @@
-# Asset Management Fiori App using ABAP RESTful Application Programming Model(RAP) -  Non Draft
+# Asset Management Fiori App using ABAP RESTful Application Programming Model(RAP) -   Draft Enabled
 
 ## Description
 
