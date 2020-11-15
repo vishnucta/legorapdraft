@@ -27,8 +27,8 @@ define behavior for ZASSET_C_LIST_PGMGR_D alias AssetPgmgr
 {
 
   // instance actions
- // use action revertAsset;
-  //use action rejectAsset;
+  use action revertAsset;
+  use action rejectAsset;
 
  // static field control
   field ( readonly ) AssetID, AssetName, AssetPortalLink, AssetType, Audience, Campaign, ContentManager, Description, Market, sku, SubAudience, Theme,ReadyDate;

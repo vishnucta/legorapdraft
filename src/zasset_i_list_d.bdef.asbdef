@@ -5,37 +5,63 @@ define behavior for ZASSET_I_LIST_D alias asset
 implementation in class zbp_asset_i_list_d unique
 persistent table zasset_d
 draft table zdasset_d
-etag master local_last_changed_at
 lock master
 total etag LastChangedAt
+
+etag master local_last_changed_at
 {
 
-  mapping for ZDASSET_D corresponding;
+  //mapping for ZASSET_D corresponding;
+
+  mapping for ZASSET_D
+  {
+    asset_id = asset_id;
+    LastChangedAt = last_changed_at;
+    asset_link = asset_link;
+    asset_name = asset_name;
+    asset_type = asset_type;
+    audience = audience;
+    campaign = campaign;
+    cont_mgr = cont_mgr;
+    description = description;
+    local_created_at = local_created_at;
+    local_created_by = local_created_by;
+    local_last_changed_at = local_last_changed_at;
+    local_last_changed_by = local_last_changed_by;
+    market = market;
+    production_status = production_status;
+    sku = sku;
+    theme = theme;
+    ready_date = ready_date;
+    sub_audience = sub_audience;
+    asset_uuid = asset_uuid;
+  }
 
   // standard operations for asset entity
   create;
   update;
   delete;
 
+  field ( numbering : managed, readonly ) asset_uuid;
 
 
   // dynamic field control
-  //field ( features : instance ) asset_id;
+  field ( features : instance ) asset_id;
 
   // mandatory fields that are required to create a asset
   field ( mandatory ) asset_id, asset_name, asset_link, production_status;
   //field ( features : instance ) asset_id,production_status;
 
   // instance action for copying asset instances
-  //action createAssetByTemplate result [1] $self;
+  action createAssetByTemplate result [1] $self;
 
 
 
   // instance action and dynamic action control
-  //action ( features : instance ) rejectAsset result [1] $self;
-  //action ( features : instance ) revertAsset result [1] $self;
+  action ( features : instance ) rejectAsset result [1] $self;
+  action ( features : instance ) revertAsset result [1] $self;
 
 
-  //validation validateAsset on save { field asset_id, asset_name, asset_link; }
-  //validation validateReadyDate on save { field asset_id, ready_date; }
+  validation validateAsset on save { field asset_id, asset_name, asset_link; }
+  validation validateReadyDate on save { field asset_id, ready_date; }
 }

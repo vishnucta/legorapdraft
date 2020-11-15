@@ -25,7 +25,7 @@ annotate view ZASSET_C_LIST_PGMGR_D with
   @UI.facet: [ { id:              'Asset',
                  purpose:         #STANDARD,
                  type:            #IDENTIFICATION_REFERENCE,
-                 label:           'Travel',
+                 label:           'Asset',
                  position:        10 } ]
   @UI.hidden: true
   asset_uuid;
