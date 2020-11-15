@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZASSET_CM2</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Message Class for Asset management</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZASSET_CM2</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Asset ID cannot be empty</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZASSET_CM2</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Asset Name cannot be empty</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZASSET_CM2</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Provide a Valid Asset Location</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZASSET_CM2</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Ready date cannot be in the past</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZASSET_CM2</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>AID should be suffixed with a numeric value</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZASSET_CM2</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>First 3 Character should be AID</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

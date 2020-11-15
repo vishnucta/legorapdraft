@@ -195,7 +195,7 @@ CLASS lhc_Asset IMPLEMENTATION.
         IF lv_charpart NE 'AID'.
           APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid ) TO failed-asset.
           APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid
-                           %msg = new_message( id        = 'ZASSET_CM'
+                           %msg = new_message( id        = 'ZASSET_CM2'
                                                number    = '006'
                                                v1        = ls_asset-asset_id
                                                severity  = if_abap_behv_message=>severity-error )
@@ -210,7 +210,7 @@ CLASS lhc_Asset IMPLEMENTATION.
             "If typecasting fails trigger a user error
             APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid ) TO failed-asset.
             APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid
-                             %msg = new_message( id        = 'ZASSET_CM'
+                             %msg = new_message( id        = 'ZASSET_CM2'
                                                  number    = '005'
                                                  v1        = ls_asset-asset_id
                                                  severity  = if_abap_behv_message=>severity-error )
@@ -224,7 +224,7 @@ CLASS lhc_Asset IMPLEMENTATION.
 
         APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid ) TO failed-asset.
         APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid
-                         %msg = new_message( id        = 'ZASSET_CM'
+                         %msg = new_message( id        = 'ZASSET_CM2'
                                              number    = '001'
                                              v1        = ls_asset-asset_id
                                              severity  = if_abap_behv_message=>severity-error )
@@ -234,7 +234,7 @@ CLASS lhc_Asset IMPLEMENTATION.
       ELSEIF ls_asset-asset_name IS INITIAL.
         APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid ) TO failed-asset.
         APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid
-                         %msg = new_message( id        = 'ZASSET_CM'
+                         %msg = new_message( id        = 'ZASSET_CM2'
                                              number    = '002'
                                              v1        = ls_asset-asset_name
                                              severity  = if_abap_behv_message=>severity-error )
@@ -244,7 +244,7 @@ CLASS lhc_Asset IMPLEMENTATION.
       ELSEIF ls_asset-asset_link IS INITIAL.
         APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid ) TO failed-asset.
         APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid
-                         %msg = new_message( id        = 'ZASSET_CM'
+                         %msg = new_message( id        = 'ZASSET_CM2'
                                              number    = '003'
                                              v1        = ls_asset-asset_link
                                              severity  = if_abap_behv_message=>severity-error )
@@ -271,7 +271,7 @@ CLASS lhc_Asset IMPLEMENTATION.
 
         APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid ) TO failed-asset.
         APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid
-                         %msg = new_message( id        = 'ZASSET_CM'
+                         %msg = new_message( id        = 'ZASSET_CM2'
                                              number    = '004'
                                              v1        = ls_asset-ready_date
                                              severity  = if_abap_behv_message=>severity-error )
