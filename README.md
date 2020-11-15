@@ -14,7 +14,7 @@ Steps to Run :
 1) Configure ABAP Cloud Platform in your personal Eclipse IDE 
     https://developers.sap.com/tutorials/abap-environment-trial-onboarding.html
     
-2) Search for a package ZLCASE(ready to run App) in ABAP cloud environment<b> (There are few chances of not finding the package because of distributed instance for trial cloud    infrastructure).
+2) Search for a package ZLCASE_V2(ready to run App) in ABAP cloud environment<b> (There are few chances of not finding the package because of distributed instance for trial cloud    infrastructure).
     
     If Package not found , do the below steps
     
