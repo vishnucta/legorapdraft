@@ -97,7 +97,7 @@ It briefly defines the scope of business logic to be implemented.
 
    <b>Screen 1 : <b>
 
-   ![Cmgr1](https://github.com/vishnucta/vishnucta/blob/main/cmgr%20scr1.JPG)  
+   ![Cmgr1](https://github.com/vishnucta/vishnucta/blob/main/draft_list.JPG)  
 
    <b>Screen 2 : <b>
 
