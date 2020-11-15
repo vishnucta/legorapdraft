@@ -1,4 +1,26 @@
-managed; // implementation in class zbp_asset_i_list_d unique;
+//-----------------------------------------------------------------------*
+//* View Name     : ZASSET_C_LIST_PGMGR_D
+//* Title         : Behavior Definition on Projection View for
+//*                 Product Group Manager
+//* Create Date   : 11-Nov-2020
+//* Release       : ABAP Platform 1809 (754)
+//* Author        : Vishnu P/vishnucta@gmail.com(p1940421247)
+//*----------------------------------------------------------------------*
+//* Description   : Behavior Definition for Root BO
+//*
+//*
+//*
+//*-----------------------------------------------------------------------*
+//* CHANGE HISTORY
+//*-----------------------------------------------------------------------*
+//*Date        | User ID      |Description                   |Change Label *
+//*-----------------------------------------------------------------------*
+//* 11-Nov-2020|p1940421247   | Initial                      |             *
+//*            |              |                              |             *
+//*            |              |                              |             *
+//*-----------------------------------------------------------------------*
+
+managed;
 with draft;
 
 define behavior for ZASSET_I_LIST_D alias asset

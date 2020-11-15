@@ -1,6 +1,6 @@
 
 //-----------------------------------------------------------------------*
-//* View Name     : ZASSET_I_LIST
+//* View Name     : ZASSET_I_LIST_D
 //* Title         : Interface View for Asset Management
 //* Create Date   : 10-Nov-2020
 //* Release       : ABAP Platform 1908 (755)

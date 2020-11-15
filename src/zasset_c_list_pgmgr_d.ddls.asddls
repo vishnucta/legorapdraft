@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------*
-//* View Name     : ZASSET_C_LIST_PGMGR
+//* View Name     : ZASSET_C_LIST_PGMGR_D
 //* Title         : Consumption/Projection View for Product Group Manager
 //* Create Date   : 11-Nov-2020
 //* Release       : ABAP Platform 1809 (754)

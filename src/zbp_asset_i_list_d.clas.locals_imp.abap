@@ -1,3 +1,23 @@
+*//&----------------------------------------------------------------------*
+*//& ABAP Class Name    lhc_asset,lcl_save
+*//&----------------------------------------------------------------------*
+*//-----------------------------------------------------------------------*
+*//* Class         : lhc_asset,lcl_save
+*//* Title         : Local Class part of Behavior Implementation
+*//* Create Date   : 10-Nov-2020
+*//* Release       : ABAP Platform 1908 (755)
+*//* Author        : Vishnu P/vishnucta@gmail.com(p1940421247)
+*//* TR            :
+*//*----------------------------------------------------------------------*
+*//* Description   : Local Class part of Behavior Implementation
+*//*-----------------------------------------------------------------------*
+*//* CHANGE HISTORY
+*//*-----------------------------------------------------------------------*
+*//*Date       | User ID      |Description                   |Change Label *
+*//*-----------------------------------------------------------------------*
+*//*10-Nov-2020| p1940421247       | Initial                      |        *
+*//*-----------------------------------------------------------------------*
+
 CLASS lhc_Asset DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
   PUBLIC SECTION.
@@ -22,49 +42,6 @@ CLASS lhc_Asset IMPLEMENTATION.
   "Handler method for Copying the Asset for template creation . Disable for now in Behavior
   METHOD copy_asset.
 
-*    "Read the entity in Local mode a get the current instance of BO
-*    READ ENTITIES OF zasset_i_list_d IN LOCAL MODE
-*      ENTITY asset
-*         FIELDS ( asset_uuid
-*                  asset_id
-*                  asset_name
-*                  production_status )
-*           WITH CORRESPONDING #( keys )
-*         RESULT    DATA(lt_read_result)
-*         FAILED    failed
-*         REPORTED  reported.
-*
-*    DATA(lv_today) = cl_abap_context_info=>get_system_date( ).
-*
-*    DATA lt_create TYPE TABLE FOR CREATE zasset_i_list_d\\asset.
-*    DATA(system_uuid) = cl_uuid_factory=>create_system_uuid( ).
-*
-*    TRY.
-*        lt_create = VALUE #( FOR row IN  lt_read_result INDEX INTO idx
-*                                 ( asset_uuid = system_uuid->create_uuid_x16( )
-*                                 asset_id      = row-asset_id
-*                                   asset_name      = row-asset_name
-*                                   production_status    = row-production_status
-*                                    ) ). " Open
-*      CATCH cx_uuid_error.
-*      ENDTRY.
-*        "Create the template value to the persistence table
-*        MODIFY ENTITIES OF zasset_i_list_d IN LOCAL MODE
-*            ENTITY asset
-*               CREATE FIELDS (    asset_id
-*                      asset_name
-*                      production_status )
-*               WITH lt_create
-*             MAPPED   mapped
-*             FAILED   failed
-*             REPORTED reported.
-*
-*
-*        result = VALUE #( FOR create IN  lt_create INDEX INTO idx
-*                                 ( %cid_ref = keys[ idx ]-%cid_ref
-*                                   %key     = keys[ idx ]-%key
-*                                   %param   = CORRESPONDING #(  create ) ) ) .
-
 
     "Read the entity in Local mode a get the current instance of BO
     READ ENTITIES OF zasset_i_list_d IN LOCAL MODE
@@ -80,6 +57,9 @@ CLASS lhc_Asset IMPLEMENTATION.
 
     DATA lt_create TYPE TABLE FOR CREATE zasset_i_list_d\\asset.
 
+
+"Iterating through the selected template value
+
     lt_create = VALUE #(  FOR row IN  lt_read_result
                        ( %is_draft          = if_abap_behv=>mk-on  "positive draft indicator
                        %control-asset_id = if_abap_behv=>mk-on
@@ -87,16 +67,16 @@ CLASS lhc_Asset IMPLEMENTATION.
                         %control-asset_name = if_abap_behv=>mk-on
                        %data-asset_name    = row-asset_name
                        ) ).
-
+"Draft creation via EML - To create draft instances, the draft indicator set to true in above
+"statement
     MODIFY ENTITIES OF zasset_i_list_d
       ENTITY asset
-        CREATE FROM
-lt_create
+        CREATE FROM lt_create
       REPORTED DATA(create_reported)
       FAILED DATA(create_failed)
       MAPPED DATA(create_mapped).
 
-"Read changed data for action result
+"Read changed data for action result - UI is taken to list
     READ ENTITIES OF zasset_i_list_d IN LOCAL MODE
       ENTITY asset
         ALL FIELDS WITH
@@ -108,7 +88,7 @@ lt_create
 
 
   ENDMETHOD.
-
+"Handler method to revert the archived data
   METHOD set_production_accept.
 
 
@@ -132,38 +112,6 @@ lt_create
                                                 %param = asset ) ).
 
 
-
-*
-*    " Modify in local mode
-*    MODIFY ENTITIES OF zasset_i_list IN LOCAL MODE
-*           ENTITY asset
-*              UPDATE FROM VALUE #( FOR key IN keys ( asset_id = key-asset_id
-*                                                     production_status = 'C' " Confidential
-*                                                     %control-production_status = if_abap_behv=>mk-on ) )
-*           FAILED   failed
-*           REPORTED reported.
-*
-*    " Read changed data for action result
-*    READ ENTITIES OF zasset_i_list IN LOCAL MODE
-*         ENTITY asset
-*         FROM VALUE #( FOR key IN keys (  asset_id = key-asset_id
-*                                          %control = VALUE #(
-*                                            asset_id       = if_abap_behv=>mk-on
-*                                            asset_link     = if_abap_behv=>mk-on
-*                                            asset_name      = if_abap_behv=>mk-on
-*                                            asset_type        = if_abap_behv=>mk-on
-*                                            audience     = if_abap_behv=>mk-on
-*
-*                                            campaign   = if_abap_behv=>mk-on
-*                                            cont_mgr  = if_abap_behv=>mk-on
-*                                            description     = if_abap_behv=>mk-on
-*
-*                                          ) ) )
-*         RESULT DATA(lt_asset).
-*
-*    result = VALUE #( FOR asset IN lt_asset ( asset_id = asset-asset_id
-*                                                %param    = asset
-*                                              ) ).
   ENDMETHOD.
 
   "Method the Archive the confidential Assets
@@ -192,40 +140,9 @@ lt_create
 
 
 
-*
-*    " Modify in local mode
-*    MODIFY ENTITIES OF zasset_i_list_d IN LOCAL MODE
-*           ENTITY asset
-*              UPDATE FROM VALUE #( FOR key IN keys ( asset_id = key-asset_id
-*                                                     production_status = 'A' " Archived
-*                                                     %control-production_status = if_abap_behv=>mk-on ) )
-*           FAILED   failed
-*           REPORTED reported.
-*
-*    " Read changed data for action result
-*    READ ENTITIES OF zasset_i_list IN LOCAL MODE
-*         ENTITY asset
-*         FROM VALUE #( FOR key IN keys (  asset_id = key-asset_id
-*                                          %control = VALUE #(
-*                                            asset_id       = if_abap_behv=>mk-on
-*                                            asset_link     = if_abap_behv=>mk-on
-*                                            asset_name      = if_abap_behv=>mk-on
-*                                            asset_type        = if_abap_behv=>mk-on
-*                                            audience     = if_abap_behv=>mk-on
-*
-*                                            campaign   = if_abap_behv=>mk-on
-*                                            cont_mgr  = if_abap_behv=>mk-on
-*                                            description     = if_abap_behv=>mk-on
-*
-*                                          ) ) )
-*         RESULT DATA(lt_asset).
-*
-*    result = VALUE #( FOR asset IN lt_asset ( asset_id = asset-asset_id
-*                                                %param    = asset
-*                                              ) ).
-
   ENDMETHOD.
 
+"Dynamic Feature control of actions
   METHOD get_instance_features.
 
     READ ENTITIES OF zasset_i_list_d IN LOCAL MODE

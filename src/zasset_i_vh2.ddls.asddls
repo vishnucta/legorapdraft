@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------*
-//* View Name     : ZASSET_I_VH
+//* View Name     : ZASSET_I_VH2
 //* Title         : Value Help View for Assets 
 //* Create Date   : 12-Nov-2020
 //* Release       : ABAP Platform 1809 (754)
