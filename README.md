@@ -101,7 +101,7 @@ It briefly defines the scope of business logic to be implemented.
 
    <b>Screen 2 : <b>
 
-   ![Cmgr1](https://github.com/vishnucta/vishnucta/blob/main/cmgr%20scr2.JPG)  
+   ![Cmgr1](https://github.com/vishnucta/vishnucta/blob/main/draft_obj.JPG)  
 
 
 ### Product Group Manager Role
