@@ -1,11 +1,13 @@
 //-----------------------------------------------------------------------*
-//* View Name     : ZASSET_C_LIST_CMGR_D
-//* Title         : Behavior Definition on Projection View for Content Manager
+//* View Name     : ZASSET_C_LIST_LMGR_D
+//* Title         : Behavior Definition on Projection View for
+//*                 Local Market Manager
 //* Create Date   : 11-Nov-2020
 //* Release       : ABAP Platform 1809 (754)
 //* Author        : Vishnu P/vishnucta@gmail.com(p1940421247)
 //*----------------------------------------------------------------------*
-//* Description   : Behavior Definition on Projection View for Content Manager
+//* Description   : Behavior Definition on Projection View for
+//*                 Local Market Manager
 //*
 //*
 //*
@@ -19,13 +21,10 @@
 //*            |              |                              |             *
 //*-----------------------------------------------------------------------*
 
-
 projection;
 use draft;
 
-define behavior for ZASSET_C_LIST_CMGR_D alias assetCmgr
+define behavior for ZASSET_C_LIST_LMGR_D //alias <alias_name>
 {
-  use create;
-  use update;
-  use delete;
+//Local Market Manager have just query access and hence no specific behavior
 }

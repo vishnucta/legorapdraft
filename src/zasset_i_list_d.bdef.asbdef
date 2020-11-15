@@ -1,15 +1,41 @@
 managed; // implementation in class zbp_asset_i_list_d unique;
 with draft;
 
-define behavior for ZASSET_I_LIST_D alias Asset//alias <alias_name>
+define behavior for ZASSET_I_LIST_D alias asset
 implementation in class zbp_asset_i_list_d unique
-persistent table ZASSET_D
+persistent table zasset_d
 draft table zdasset_d
 etag master local_last_changed_at
 lock master
 total etag LastChangedAt
 {
+
+  mapping for ZDASSET_D corresponding;
+
+  // standard operations for asset entity
   create;
   update;
   delete;
+
+
+
+  // dynamic field control
+  //field ( features : instance ) asset_id;
+
+  // mandatory fields that are required to create a asset
+  field ( mandatory ) asset_id, asset_name, asset_link, production_status;
+  //field ( features : instance ) asset_id,production_status;
+
+  // instance action for copying asset instances
+  //action createAssetByTemplate result [1] $self;
+
+
+
+  // instance action and dynamic action control
+  //action ( features : instance ) rejectAsset result [1] $self;
+  //action ( features : instance ) revertAsset result [1] $self;
+
+
+  //validation validateAsset on save { field asset_id, asset_name, asset_link; }
+  //validation validateReadyDate on save { field asset_id, ready_date; }
 }

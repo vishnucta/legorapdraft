@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Product Group Manager'
+define service ZUI_C_ASSET_PGMGR_D {
+  expose ZASSET_C_LIST_PGMGR_D as AssetPgmgr;
+}

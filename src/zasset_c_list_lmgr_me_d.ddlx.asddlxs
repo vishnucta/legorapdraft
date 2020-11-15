@@ -1,11 +1,11 @@
 //-----------------------------------------------------------------------*
-//* View Name     : ZASSET_C_LIST_CMGR_ME
-//* Title         : Metadata Extension View for Content Manager
+//* View Name     : ZASSET_C_LIST_LMGR_D
+//* Title         : Metadata Extension View for Local Market Manager 
 //* Create Date   : 11-Nov-2020
 //* Release       : ABAP Platform 1809 (754)
 //* Author        : Vishnu P/vishnucta@gmail.com(p1940421247)
 //*----------------------------------------------------------------------*
-//* Description   : Metadata Extension View for Content Manager
+//* Description   : Metadata Extension View for Local Market Manager 
 //*
 //*
 //*
@@ -19,24 +19,21 @@
 //*            |              |                              |             *
 //*-----------------------------------------------------------------------*
 
+
 @Metadata.layer: #PARTNER
-annotate view ZASSET_C_LIST_CMGR_D with
+annotate view ZASSET_C_LIST_LMGR_D with
 {
   @UI.facet: [ { id:              'Asset',
                  purpose:         #STANDARD,
                  type:            #IDENTIFICATION_REFERENCE,
                  label:           'Travel',
                  position:        10 } ]
-
   @UI.hidden: true
   asset_uuid;
-
   @UI: {
-      lineItem:       [ { position: 10, importance: #HIGH, label: 'Asset ID' },{ type: #FOR_ACTION, dataAction: 'createAssetByTemplate', label: 'Create Asset by Template' } ],
+      lineItem:       [ { position: 10, importance: #HIGH, label: 'Asset ID' }],
       identification: [ { position: 10, label: 'Asset ID [AIDXXXXX]' } ] }
   @Search.defaultSearchElement: true
-  @UI.selectionField: [{position: 10}]
-  @Consumption.valueHelpDefinition: [{entity: {name: 'ZASSET_I_VH2', element: 'AssetID' }}]
   AssetID;
   @UI: {
            lineItem:       [ { position: 20, importance: #HIGH, label: 'Asset Name' } ],
@@ -51,7 +48,7 @@ annotate view ZASSET_C_LIST_CMGR_D with
   @UI: {
         lineItem:       [ { position: 60, importance: #HIGH, label: 'Production Status' }],
       identification: [ { position: 60, label: '[D(Done)|N(Not Done)|I(In Progress)]' } ]  }
-  @Consumption.valueHelpDefinition: [{ entity : {name: 'ZPRODSTAT_I_VH2', element: 'ProdStatus'  } }]
+      @Consumption.valueHelpDefinition: [{ entity : {name: 'ZPRODSTAT_I_VH', element: 'ProdStatus'  } }]
   ProductionStatus;
   @UI.identification: [ { position: 70, label: 'Description' } ]
   Description;
@@ -86,8 +83,8 @@ annotate view ZASSET_C_LIST_CMGR_D with
   @UI: {
          lineItem:       [ { position: 150, importance: #HIGH, label: 'Market' }],
        identification: [ { position: 150, label: 'Market' } ]  }
-  @Consumption.valueHelpDefinition: [{entity: {name: 'ZMARKET_I_VH2', element: 'Market' }}]
-
+  @Consumption.valueHelpDefinition: [{entity: {name: 'ZMARKET_I_VH', element: 'Market' }}]
+  @UI.selectionField: [{position: 10}]
   Market;
   @UI: {
          lineItem:       [ { position: 160, importance: #HIGH, label: 'Content Manager' }],

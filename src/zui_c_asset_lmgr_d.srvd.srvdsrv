@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Local Market Manager'
+define service ZUI_C_ASSET_LMGR_D {
+  expose ZASSET_C_LIST_LMGR_D as AssetLmgr;
+}
