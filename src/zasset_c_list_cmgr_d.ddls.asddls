@@ -1,3 +1,4 @@
+
 //-----------------------------------------------------------------------*
 //* View Name     : ZASSET_C_LIST_CMGR
 //* Title         : Consumption/Projection View for Content Manager
@@ -36,9 +37,9 @@ define root view entity ZASSET_C_LIST_CMGR_D
       asset_id           as AssetID,
       asset_name         as AssetName,
       asset_link         as AssetPortalLink,
-      //@ObjectModel.text.element: ['ProdStatName']
+      @ObjectModel.text.element: ['ProdStatName']
       production_status  as ProductionStatus,
-      //_prodStat.StatName as ProdStatName,
+      _prodStat.StatName as ProdStatName,
       description        as Description,
       ready_date         as ReadyDate,
       asset_type         as AssetType,

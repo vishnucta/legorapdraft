@@ -4,7 +4,7 @@ with draft;
 define behavior for ZASSET_I_LIST_D alias Asset//alias <alias_name>
 implementation in class zbp_asset_i_list_d unique
 persistent table ZASSET_D
-draft table zdassetd
+draft table zdasset_d
 etag master local_last_changed_at
 lock master
 total etag LastChangedAt

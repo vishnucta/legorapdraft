@@ -1,3 +1,4 @@
+
 //-----------------------------------------------------------------------*
 //* View Name     : ZASSET_I_LIST
 //* Title         : Interface View for Asset Management
@@ -24,7 +25,7 @@ define root view entity ZASSET_I_LIST_D
   as select from zasset_d as Asset
 
 
-  //association [0..1] to ZPRODSTAT_I_VH    as _prodStat   on $projection.production_status = _prodStat.ProdStatus
+  association [0..1] to ZPRODSTAT_I_VH2    as _prodStat   on $projection.production_status = _prodStat.ProdStatus
 {
 
   key asset_uuid,
@@ -56,9 +57,9 @@ define root view entity ZASSET_I_LIST_D
       local_last_changed_at,
       //total ETag field
       @Semantics.systemDateTime.lastChangedAt: true
-      last_changed_at       as LastChangedAt
+      last_changed_at       as LastChangedAt,
 
       /* Associations */
-      //_prodStat
+      _prodStat
 
 }

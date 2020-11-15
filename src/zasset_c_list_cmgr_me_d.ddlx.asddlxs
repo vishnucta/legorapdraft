@@ -33,7 +33,7 @@ annotate view ZASSET_C_LIST_CMGR_D with
       identification: [ { position: 10, label: 'Asset ID [AIDXXXXX]' } ] }
   @Search.defaultSearchElement: true 
   @UI.selectionField: [{position: 10}]
-  //@Consumption.valueHelpDefinition: [{entity: {name: 'ZASSET_I_VH', element: 'AssetID' }}]
+  @Consumption.valueHelpDefinition: [{entity: {name: 'ZASSET_I_VH2', element: 'AssetID' }}]
   AssetID;
   @UI: {
            lineItem:       [ { position: 20, importance: #HIGH, label: 'Asset Name' } ],
@@ -45,11 +45,11 @@ annotate view ZASSET_C_LIST_CMGR_D with
              identification: [ { type:#WITH_URL,position: 30, label: 'Asset Link',url: 'AssetPortalLink' } ] }
   @Search.defaultSearchElement: false
   AssetPortalLink;
-//  @UI: {
-//        lineItem:       [ { position: 60, importance: #HIGH, label: 'Production Status' }],
-//      identification: [ { position: 60, label: '[D(Done)|N(Not Done)|I(In Progress)]' } ]  }
-//      @Consumption.valueHelpDefinition: [{ entity : {name: 'ZPRODSTAT_I_VH', element: 'ProdStatus'  } }]
-//  ProductionStatus;
+  @UI: {
+        lineItem:       [ { position: 60, importance: #HIGH, label: 'Production Status' }],
+      identification: [ { position: 60, label: '[D(Done)|N(Not Done)|I(In Progress)]' } ]  }
+      @Consumption.valueHelpDefinition: [{ entity : {name: 'ZPRODSTAT_I_VH2', element: 'ProdStatus'  } }]
+  ProductionStatus;
   @UI.identification: [ { position: 70, label: 'Description' } ]
   Description;
   @UI: {
@@ -83,7 +83,7 @@ annotate view ZASSET_C_LIST_CMGR_D with
   @UI: {
          lineItem:       [ { position: 150, importance: #HIGH, label: 'Market' }],
        identification: [ { position: 150, label: 'Market' } ]  }
-  //@Consumption.valueHelpDefinition: [{entity: {name: 'ZMARKET_I_VH', element: 'Market' }}]
+  @Consumption.valueHelpDefinition: [{entity: {name: 'ZMARKET_I_VH2', element: 'Market' }}]
 
   Market;
   @UI: {
@@ -91,5 +91,5 @@ annotate view ZASSET_C_LIST_CMGR_D with
        identification: [ { position: 160, label: 'Content Manager' } ]  }
   ContentManager;
   @UI.hidden: true
-  lastchangedat;
+  LocalLastChangedAt;
 }

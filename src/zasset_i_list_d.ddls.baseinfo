@@ -6,7 +6,9 @@
 "ZASSET_D"
 ],
 "ASSOCIATED":
-[],
+[
+"ZPRODSTAT_I_VH2"
+],
 "BASE":
 [],
 "ANNO_REF":
