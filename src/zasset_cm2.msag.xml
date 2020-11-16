@@ -24,7 +24,7 @@
      <SPRSL>E</SPRSL>
      <ARBGB>ZASSET_CM2</ARBGB>
      <MSGNR>003</MSGNR>
-     <TEXT>Provide a Valid Asset Location</TEXT>
+     <TEXT>Provide a Valid Asset Link/Location</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>
@@ -43,6 +43,12 @@
      <ARBGB>ZASSET_CM2</ARBGB>
      <MSGNR>006</MSGNR>
      <TEXT>First 3 Character should be AID</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZASSET_CM2</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>Asset ID exists</TEXT>
     </T100>
    </T100>
   </asx:values>

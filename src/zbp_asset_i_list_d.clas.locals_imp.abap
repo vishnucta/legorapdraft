@@ -58,7 +58,7 @@ CLASS lhc_Asset IMPLEMENTATION.
     DATA lt_create TYPE TABLE FOR CREATE zasset_i_list_d\\asset.
 
 
-"Iterating through the selected template value
+    "Iterating through the selected template value
 
     lt_create = VALUE #(  FOR row IN  lt_read_result
                        ( %is_draft          = if_abap_behv=>mk-on  "positive draft indicator
@@ -67,8 +67,8 @@ CLASS lhc_Asset IMPLEMENTATION.
                         %control-asset_name = if_abap_behv=>mk-on
                        %data-asset_name    = row-asset_name
                        ) ).
-"Draft creation via EML - To create draft instances, the draft indicator set to true in above
-"statement
+    "Draft creation via EML - To create draft instances, the draft indicator set to true in above
+    "statement
     MODIFY ENTITIES OF zasset_i_list_d
       ENTITY asset
         CREATE FROM lt_create
@@ -76,7 +76,7 @@ CLASS lhc_Asset IMPLEMENTATION.
       FAILED DATA(create_failed)
       MAPPED DATA(create_mapped).
 
-"Read changed data for action result - UI is taken to list
+    "Read changed data for action result - UI is taken to list
     READ ENTITIES OF zasset_i_list_d IN LOCAL MODE
       ENTITY asset
         ALL FIELDS WITH
@@ -88,7 +88,7 @@ CLASS lhc_Asset IMPLEMENTATION.
 
 
   ENDMETHOD.
-"Handler method to revert the archived data
+  "Handler method to revert the archived data
   METHOD set_production_accept.
 
 
@@ -142,7 +142,7 @@ CLASS lhc_Asset IMPLEMENTATION.
 
   ENDMETHOD.
 
-"Dynamic Feature control of actions
+  "Dynamic Feature control of actions
   METHOD get_instance_features.
 
     READ ENTITIES OF zasset_i_list_d IN LOCAL MODE
@@ -217,6 +217,23 @@ CLASS lhc_Asset IMPLEMENTATION.
                              %element-asset_id = if_abap_behv=>mk-on )
               TO reported-asset.
         ENDTRY.
+
+        SELECT SINGLE asset_id   FROM zasset_i_list_d  WHERE asset_id = @ls_asset-asset_id INTO @DATA(lv_asset_id).
+          IF sy-subrc = 0.
+            IF lv_asset_id EQ ls_asset-asset_id.
+              APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid ) TO failed-asset.
+              APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid
+                               %msg = new_message( id        = 'ZASSET_CM2'
+                                                   number    = '007'
+                                                   v1        = ls_asset-asset_id
+                                                   severity  = if_abap_behv_message=>severity-error )
+                               %element-asset_id = if_abap_behv=>mk-on )
+                TO reported-asset.
+            ENDIF.
+
+          ENDIF.
+
+
       ENDIF.
 
       "If User enters Empty Asset ID
