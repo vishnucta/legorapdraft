@@ -49,7 +49,19 @@ CLASS lhc_Asset IMPLEMENTATION.
          FIELDS ( asset_uuid
                   asset_id
                   asset_name
-                  production_status )
+                  production_status
+                  asset_link
+                  asset_type
+                  audience
+                  campaign
+                  cont_mgr
+                  description
+                  market
+                  ready_date
+                  sku
+                  sub_audience
+                  theme
+                   )
            WITH CORRESPONDING #( keys )
          RESULT    DATA(lt_read_result)
          FAILED    failed
@@ -66,6 +78,30 @@ CLASS lhc_Asset IMPLEMENTATION.
                        %data-asset_id    = row-asset_id
                         %control-asset_name = if_abap_behv=>mk-on
                        %data-asset_name    = row-asset_name
+                       %control-asset_link = if_abap_behv=>mk-on
+                       %data-asset_link    = row-asset_link
+                       %control-asset_type = if_abap_behv=>mk-on
+                       %data-asset_type    = row-asset_type
+                       %control-audience = if_abap_behv=>mk-on
+                       %data-audience    = row-audience
+                        %control-campaign = if_abap_behv=>mk-on
+                       %data-campaign    = row-campaign
+                        %control-cont_mgr = if_abap_behv=>mk-on
+                       %data-cont_mgr    = row-cont_mgr
+                       %control-description = if_abap_behv=>mk-on
+                       %data-description    = row-description
+                       %control-market = if_abap_behv=>mk-on
+                       %data-market    = row-market
+                       %control-production_status = if_abap_behv=>mk-on
+                       %data-production_status    = row-production_status
+                       %control-ready_date = if_abap_behv=>mk-on
+                       %data-ready_date    = row-ready_date
+                       %control-sku = if_abap_behv=>mk-on
+                       %data-sku    = row-sku
+                       %control-sub_audience = if_abap_behv=>mk-on
+                       %data-sub_audience    = row-sub_audience
+                       %control-theme = if_abap_behv=>mk-on
+                       %data-theme    = row-theme
                        ) ).
     "Draft creation via EML - To create draft instances, the draft indicator set to true in above
     "statement
@@ -219,19 +255,19 @@ CLASS lhc_Asset IMPLEMENTATION.
         ENDTRY.
 
         SELECT SINGLE asset_id   FROM zasset_i_list_d  WHERE asset_id = @ls_asset-asset_id INTO @DATA(lv_asset_id).
-          IF sy-subrc = 0.
-            IF lv_asset_id EQ ls_asset-asset_id.
-              APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid ) TO failed-asset.
-              APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid
-                               %msg = new_message( id        = 'ZASSET_CM2'
-                                                   number    = '007'
-                                                   v1        = ls_asset-asset_id
-                                                   severity  = if_abap_behv_message=>severity-error )
-                               %element-asset_id = if_abap_behv=>mk-on )
-                TO reported-asset.
-            ENDIF.
-
+        IF sy-subrc = 0.
+          IF lv_asset_id EQ ls_asset-asset_id.
+            APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid ) TO failed-asset.
+            APPEND VALUE #(  asset_uuid = ls_asset-asset_uuid
+                             %msg = new_message( id        = 'ZASSET_CM2'
+                                                 number    = '007'
+                                                 v1        = ls_asset-asset_id
+                                                 severity  = if_abap_behv_message=>severity-error )
+                             %element-asset_id = if_abap_behv=>mk-on )
+              TO reported-asset.
           ENDIF.
+
+        ENDIF.
 
 
       ENDIF.
