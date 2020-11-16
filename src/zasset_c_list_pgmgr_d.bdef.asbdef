@@ -22,7 +22,7 @@
 //*-----------------------------------------------------------------------*
 
 projection;
-
+use draft;
 define behavior for ZASSET_C_LIST_PGMGR_D alias AssetPgmgr
 {
 
